@@ -9,7 +9,7 @@ on:
 
 jobs:
   terraform-version:
-    name: Terraform Version
+    name: Verifica Version Terraform
     runs-on: ubuntu-latest
 
     steps:
