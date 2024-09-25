@@ -8,9 +8,14 @@ on:
       #-'carpeta/**' Se ejecuta solo si se modifica algo en el codigo dentro de esa carpeta 
 
 jobs:
-  terraform-version:
-    name: Verifica Version Terraform
+  Deploy-VM:
+    name: Despliega VM en Azure
     runs-on: ubuntu-latest
+    env:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      AZURE_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
     steps:
       # Paso 1: Chequea el código del repositorio
