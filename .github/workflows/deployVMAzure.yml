@@ -1,0 +1,28 @@
+name: Deploy VM Azure
+
+on:
+  push:
+    branches:
+      - main
+    #paths:
+      #-'carpeta/**' Se ejecuta solo si se modifica algo en el codigo dentro de esa carpeta 
+
+jobs:
+  terraform-version:
+    name: Terraform Version
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Chequea el código del repositorio
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Paso 2: Instala Terraform
+      #- name: Setup Terraform
+        #uses: hashicorp/setup-terraform@v2
+        #with:
+          #terraform_version: latest  # O puedes especificar una versión, por ejemplo: 1.5.0
+
+      # Paso 3: Ejecuta terraform version
+      - name: Run Terraform Version
+        run: terraform version
