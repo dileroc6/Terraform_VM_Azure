@@ -24,5 +24,11 @@ jobs:
           #terraform_version: latest  # O puedes especificar una versión, por ejemplo: 1.5.0
 
       # Paso 3: Ejecuta terraform version
-      - name: Run Terraform Version
-        run: terraform version
+      - name: Run Terraform Init
+        run: terraform init
+      - name: Run Terraform FMT
+        run: terraform fmt
+      - name: Run Terraform Validate
+        run: terraform validate
+      - name: Run Terraform Plan
+        run: terraform plan
