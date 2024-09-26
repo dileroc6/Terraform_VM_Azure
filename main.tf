@@ -14,7 +14,7 @@ resource "azurerm_subnet" "subnet_ukwest_tf" {
   name                 = var.subnetname
   resource_group_name  = azurerm_resource_group.rg_ukwest_tf.name
   virtual_network_name = azurerm_virtual_network.vnet_ukwest_tf.name
-  address_prefixes     = var.cidrsubnet.id
+  address_prefixes     = [var.cidrsubnet]
 }
 
 resource "azurerm_network_interface" "rg_ukwest_tf" {
