@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "rg_ukwest_tf" {
 
 resource "azurerm_virtual_network" "vnet_ukwest_tf" {
   name                = var.vnetname
-  address_space       = var.cidrvnet.id
+  address_space       = var.cidrvnet
   location            = azurerm_resource_group.rg_ukwest_tf.location
   resource_group_name = azurerm_resource_group.rg_ukwest_tf.name
 }
@@ -13,7 +13,7 @@ resource "azurerm_virtual_network" "vnet_ukwest_tf" {
 resource "azurerm_subnet" "subnet_ukwest_tf" {
   name                 = var.subnetname
   resource_group_name  = azurerm_resource_group.rg_ukwest_tf.name
-  virtual_network_name = azurerm_virtual_network.rg_ukwest_tf.name
+  virtual_network_name = azurerm_virtual_network.vnet_ukwest_tf.name
   address_prefixes     = var.cidrsubnet.id
 }
 
@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "rg_ukwest_tf" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.rg_ukwest_tf.id
+    subnet_id                     = azurerm_subnet.subnet_ukwest_tf.id
     private_ip_address_allocation = "Dynamic"
   }
 }
