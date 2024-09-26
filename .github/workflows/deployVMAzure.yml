@@ -30,7 +30,7 @@ jobs:
 
       # Paso 3: Ejecuta terraform version
       - name: Run Terraform Init
-        run: terraform nit -backend-config="sas_token=${{ secrets.SAS_TOKEN }}"
+        run: terraform init -backend-config="sas_token=${{ secrets.SAS_TOKEN }}"
       - name: Run Terraform FMT
         run: terraform fmt
       - name: Run Terraform Validate
