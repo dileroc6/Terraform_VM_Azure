@@ -30,12 +30,7 @@ jobs:
 
       # Paso 3: Ejecuta terraform version
       - name: Run Terraform Init
-        env:
-          AZURE_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
-          AZURE_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
-          AZURE_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
-          AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        run: terraform init
+        run: terraform nit -backend-config="sas_token=${{ secrets.SAS_TOKEN }}"
       - name: Run Terraform FMT
         run: terraform fmt
       - name: Run Terraform Validate
