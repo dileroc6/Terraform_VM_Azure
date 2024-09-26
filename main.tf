@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "rg_ukwest_tf" {
 
 resource "azurerm_virtual_network" "vnet_ukwest_tf" {
   name                = var.vnetname
-  address_space       = var.cidrvnet
+  address_space       = [var.cidrvnet]
   location            = azurerm_resource_group.rg_ukwest_tf.location
   resource_group_name = azurerm_resource_group.rg_ukwest_tf.name
 }
